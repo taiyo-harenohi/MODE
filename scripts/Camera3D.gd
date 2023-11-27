@@ -10,14 +10,27 @@ var zoom: float = 45
 
 var mouse = Vector3()
 
+var isHolding: bool = false
+var time = 0
+
+@onready var handlerResources = $"../HandleResources"
+@onready var platform = $"../platform"
+
+func _physics_process(delta):
+	if isHolding:
+		time += delta
+		get_selected()
+	else: 
+		time = 0
+
 func _input(event):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		position -= Vector3(event.relative.x, 0, event.relative.y) * dragSen / fov * 0.1
 
 	if event is InputEventMouseButton:
 		mouse = event.position
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			get_selected()
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			isHolding = event.pressed
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			fov -= zoomSpeed
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -36,6 +49,5 @@ func get_selected():
 	var end = project_position(mouse, 1000)
 	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
 	
-	var clicked_object = result["collider"]
-	if clicked_object.is_in_group("wood"):
-		print("is wood")
+	if result["collider"] != platform:
+		handlerResources.detect_object(result["collider"], time)

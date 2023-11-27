@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://s4pjmawr2pyx"]
+[gd_scene load_steps=7 format=3 uid="uid://s4pjmawr2pyx"]
 
+[ext_resource type="Script" path="res://scripts/Resource.gd" id="1_2jgal"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="1_w78d5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6vrc"]
@@ -86,3 +87,6 @@ shape = SubResource("BoxShape3D_tnflf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="item3"]
 mesh = SubResource("BoxMesh_2dli3")
+
+[node name="HandleResources" type="Node3D" parent="."]
+script = ExtResource("1_2jgal")
