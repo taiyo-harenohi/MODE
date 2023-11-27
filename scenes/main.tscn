@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://s4pjmawr2pyx"]
+[gd_scene load_steps=7 format=3 uid="uid://s4pjmawr2pyx"]
 
+[ext_resource type="Script" path="res://scripts/resource.gd" id="1_psw0f"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="1_w78d5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6vrc"]
@@ -25,6 +26,7 @@ skeleton = NodePath("../..")
 
 [node name="item1" type="StaticBody3D" parent="."]
 transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, -0.357349, 0.151982, 0)
+script = ExtResource("1_psw0f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item1"]
 shape = SubResource("BoxShape3D_tnflf")
