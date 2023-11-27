@@ -45,3 +45,6 @@ mesh = SubResource("BoxMesh_2dli3")
 transform = Transform3D(0.963472, -0.133905, 0.23193, -0.0449757, 0.772823, 0.633025, -0.264007, -0.620333, 0.738571, 1, 2, 2.5)
 fov = 45.0
 script = ExtResource("1_w78d5")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.966291, 0.257453, 0, -0.257453, 0.966291, 0, 0.282035, 1.45248)

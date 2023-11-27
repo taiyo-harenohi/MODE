@@ -2,8 +2,8 @@ extends Camera3D
 
 var zoomSpeed: float = 1
 var minZoom: float = 25.0
-var maxZoom: float = 65.0
-var dragSen: float = 1.0
+var maxZoom: float = 85.0
+var dragSen: float = 2.0
 
 var center: Vector3 = Vector3(1, 2, 2.5)
 var zoom: float = 45
