@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://s4pjmawr2pyx"]
+
+[ext_resource type="Script" path="res://scripts/Camera3D.gd" id="1_w78d5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6vrc"]
+size = Vector3(1.67004, 0.102964, 1.35368)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kdsnx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tnflf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2dli3"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="platform" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform"]
+shape = SubResource("BoxShape3D_k6vrc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="platform"]
+transform = Transform3D(1.6902, 0, 0, 0, 0.11579, 0, 0, 0, 1.34738, 0, 0, 0)
+mesh = SubResource("BoxMesh_kdsnx")
+skeleton = NodePath("../..")
+
+[node name="item1" type="StaticBody3D" parent="."]
+transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, -0.357349, 0.151982, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="item1"]
+shape = SubResource("BoxShape3D_tnflf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="item1"]
+mesh = SubResource("BoxMesh_2dli3")
+
+[node name="item2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, 0.397235, 0.151982, 0.303752)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="item2"]
+shape = SubResource("BoxShape3D_tnflf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="item2"]
+mesh = SubResource("BoxMesh_2dli3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.963472, -0.133905, 0.23193, -0.0449757, 0.772823, 0.633025, -0.264007, -0.620333, 0.738571, 0.76572, 1.92096, 2.34848)
+fov = 50.0
+script = ExtResource("1_w78d5")
