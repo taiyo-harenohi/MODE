@@ -49,5 +49,7 @@ func get_selected():
 	var end = project_position(mouse, 1000)
 	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
 	
-	if result["collider"] != platform:
-		handlerResources.detect_object(result["collider"], time)
+	if result.has("collider"):
+		if result["collider"] != platform:
+			print(result["collider"])
+			handlerResources.detect_object(result["collider"], time)

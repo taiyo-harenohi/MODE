@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://byadm7hmy2wjj"]
+
+[ext_resource type="Script" path="res://scripts/GeneratePlatform.gd" id="1_4hwxk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gys0x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pd338"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4rwch"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1mxoq"]
+
+[node name="platform" type="Node3D"]
+script = ExtResource("1_4hwxk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(2.17437, 0, 0, 0, 0.296265, 0, 0, 0, 2.32934, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_gys0x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_pd338")
+
+[node name="up" type="StaticBody3D" parent="." groups=["arrow"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="up"]
+shape = SubResource("BoxShape3D_4rwch")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="up"]
+mesh = SubResource("BoxMesh_1mxoq")
+
+[node name="down" type="StaticBody3D" parent="." groups=["arrow"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="down"]
+shape = SubResource("BoxShape3D_4rwch")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="down"]
+mesh = SubResource("BoxMesh_1mxoq")
+
+[node name="right" type="StaticBody3D" parent="." groups=["arrow"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="right"]
+shape = SubResource("BoxShape3D_4rwch")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="right"]
+mesh = SubResource("BoxMesh_1mxoq")
+
+[node name="left" type="StaticBody3D" parent="." groups=["arrow"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="left"]
+shape = SubResource("BoxShape3D_4rwch")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="left"]
+mesh = SubResource("BoxMesh_1mxoq")
