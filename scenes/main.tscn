@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://s4pjmawr2pyx"]
+[gd_scene load_steps=6 format=3 uid="uid://s4pjmawr2pyx"]
 
-[ext_resource type="Script" path="res://scripts/resource.gd" id="1_psw0f"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="1_w78d5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6vrc"]
@@ -24,9 +23,8 @@ transform = Transform3D(1.6902, 0, 0, 0, 0.11579, 0, 0, 0, 1.34738, 0, 0, 0)
 mesh = SubResource("BoxMesh_kdsnx")
 skeleton = NodePath("../..")
 
-[node name="item1" type="StaticBody3D" parent="."]
+[node name="item1" type="StaticBody3D" parent="." groups=["wood"]]
 transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, -0.357349, 0.151982, 0)
-script = ExtResource("1_psw0f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item1"]
 shape = SubResource("BoxShape3D_tnflf")
@@ -34,7 +32,7 @@ shape = SubResource("BoxShape3D_tnflf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="item1"]
 mesh = SubResource("BoxMesh_2dli3")
 
-[node name="item2" type="StaticBody3D" parent="."]
+[node name="item2" type="StaticBody3D" parent="." groups=["water"]]
 transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, 0.397235, 0.151982, 0.303752)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item2"]
@@ -50,3 +48,41 @@ script = ExtResource("1_w78d5")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.966291, 0.257453, 0, -0.257453, 0.966291, 0, 0.282035, 1.45248)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.998
+anchor_bottom = 1.0
+offset_right = 0.303955
+offset_bottom = 5.0
+
+[node name="wood_label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.209
+anchor_bottom = 0.115
+offset_right = -0.350006
+offset_bottom = -0.0950012
+text = "Wood: 0"
+
+[node name="water_label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.272
+anchor_top = 0.002
+anchor_right = 0.481
+anchor_bottom = 0.116
+offset_left = 0.199982
+offset_top = -0.306
+offset_right = -0.150024
+offset_bottom = 0.251999
+text = "Water: 0"
+
+[node name="item3" type="StaticBody3D" parent="." groups=["water"]]
+transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, -0.162016, 0.151982, 0.271158)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="item3"]
+shape = SubResource("BoxShape3D_tnflf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="item3"]
+mesh = SubResource("BoxMesh_2dli3")

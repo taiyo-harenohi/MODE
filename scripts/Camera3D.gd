@@ -1,6 +1,6 @@
 extends Camera3D
 
-var zoomSpeed: float = 1
+var zoomSpeed: float = 2
 var minZoom: float = 25.0
 var maxZoom: float = 85.0
 var dragSen: float = 2.0
@@ -35,4 +35,7 @@ func get_selected():
 	var start = project_ray_origin(mouse)
 	var end = project_position(mouse, 1000)
 	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
-	print(result["collider"])
+	
+	var clicked_object = result["collider"]
+	if clicked_object.is_in_group("wood"):
+		print("is wood")
