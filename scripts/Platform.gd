@@ -7,6 +7,7 @@ var probabilityDict = {
 }
 
 var resourcesList = {}
+var MIN_DISTANCE_BETWEEN_RESOURCES = 0.1
 
 @onready var _platform = $"ground"
 
@@ -51,28 +52,35 @@ func generate_resources(type):
 	var rng = RandomNumberGenerator.new()
 	var probability = rng.randf_range(1, 4)
 	
-	var cube_scale = self.get_node("ground").scale
-	var side_length = cube_scale.x 
+	var cube_scale = self.get_node("ground").global_transform.basis.get_scale()
+	var side_length = cube_scale.x / 2
+
 	
 	# TODO: load resource -- path the same, the end will be based on the type 
+	var path = str("res://scenes/", type, ".tscn")
 	var resource = load("res://scenes/wood.tscn")
 	var i = 0
 	while i < probability:
-		var position_x = rng.randf_range(0, side_length)		
-		var position_z = rng.randf_range(0, side_length)		
+		var position_x = rng.randf_range(-0.3, side_length - 0.01)		
+		var position_z = rng.randf_range(-0.3, side_length - 0.01)		
 		
 		var ground_position = _platform.global_transform.origin
 		# TODO: not correct position
-		var resource_position = ground_position + Vector3(position_x / cube_scale.x, cube_scale.y, position_z / cube_scale.z)
-		
+		var resource_position = ground_position + Vector3(position_x, cube_scale.y, position_z)
 
-		var _instance = resource.instantiate()
-		get_tree().get_root().add_child(_instance)
-		_instance.transform.origin = resource_position
-		
-		_instance.connect("destroyResource", destroyResource)
-		resourcesList[_instance.global_position] = _instance.position
-		i += 1
+		var too_close = false
+		for generated_pos in resourcesList.values():
+			if resource_position.distance_to(generated_pos) < MIN_DISTANCE_BETWEEN_RESOURCES:
+				too_close = true
+				break
+
+		if not too_close:
+			var _instance = resource.instantiate()
+			get_tree().get_root().add_child(_instance)
+			_instance.transform.origin = resource_position
+			_instance.connect("destroyResource", destroyResource)
+			resourcesList[_instance.global_position] = _instance.position
+			i += 1
 	
 func destroyResource(resource):
 	if resource.global_position in _platform.resourcesList.keys():
