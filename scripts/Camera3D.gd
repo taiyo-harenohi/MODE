@@ -13,6 +13,8 @@ var mouse = Vector3()
 var isHolding: bool = false
 var time = 0
 
+var count = 0
+
 var platformInstance = load("res://scenes/platform.tscn")
 
 @onready var _handlerResources = $"../HandleResources"
@@ -53,8 +55,11 @@ func get_selected():
 	if result.has("collider"):
 		if result["collider"].is_in_group("resources"):
 			_handlerResources.detect_object(result["collider"], time)
-		if result["collider"].is_in_group("arrow"):
+		elif result["collider"].is_in_group("arrow"):
 			var _instance = platformInstance.instantiate()
 			get_tree().get_root().add_child(_instance)
-			_instance.global_transform = result["collider"].global_transform
+			_instance.global_transform = result["collider"].global_transform	
 			result["collider"].queue_free()
+			_instance.detect_colliders()	
+			count += 1
+			

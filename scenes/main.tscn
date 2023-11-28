@@ -1,13 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://s4pjmawr2pyx"]
+[gd_scene load_steps=6 format=3 uid="uid://s4pjmawr2pyx"]
 
 [ext_resource type="Script" path="res://scripts/Resource.gd" id="1_2jgal"]
 [ext_resource type="PackedScene" uid="uid://byadm7hmy2wjj" path="res://scenes/platform.tscn" id="1_ploio"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="1_w78d5"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_k6vrc"]
-size = Vector3(1.67004, 0.102964, 1.35368)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kdsnx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tnflf"]
 
@@ -15,21 +10,11 @@ size = Vector3(1.67004, 0.102964, 1.35368)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="platform2" parent="." groups=["platform"] instance=ExtResource("1_ploio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.842, 0, 0)
-
-[node name="platform" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="platform"]
-shape = SubResource("BoxShape3D_k6vrc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="platform"]
-transform = Transform3D(1.6902, 0, 0, 0, 0.11579, 0, 0, 0, 1.34738, 0, 0, 0)
-mesh = SubResource("BoxMesh_kdsnx")
-skeleton = NodePath("../..")
+[node name="platform" parent="." instance=ExtResource("1_ploio")]
+transform = Transform3D(0.447143, 0, 0, 0, 0.447143, 0, 0, 0, 0.447143, 0, 0, 0)
 
 [node name="item1" type="StaticBody3D" parent="." groups=["resources", "wood"]]
-transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, -0.357349, 0.151982, 0)
+transform = Transform3D(0.0865572, 0, 0, 0, 0.0865572, 0, 0, 0, 0.0865572, -0.176666, 0.179585, 0.0794608)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item1"]
 shape = SubResource("BoxShape3D_tnflf")
@@ -38,7 +23,7 @@ shape = SubResource("BoxShape3D_tnflf")
 mesh = SubResource("BoxMesh_2dli3")
 
 [node name="item2" type="StaticBody3D" parent="." groups=["resources", "water"]]
-transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, 0.397235, 0.151982, 0.303752)
+transform = Transform3D(0.0865572, 0, 0, 0, 0.0865572, 0, 0, 0, 0.0865572, 0.160741, 0.179585, 0.215282)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item2"]
 shape = SubResource("BoxShape3D_tnflf")
@@ -47,7 +32,7 @@ shape = SubResource("BoxShape3D_tnflf")
 mesh = SubResource("BoxMesh_2dli3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.963472, -0.133905, 0.23193, -0.0449757, 0.772823, 0.633025, -0.264007, -0.620333, 0.738571, 1, 2, 2.5)
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0.130013, 3, 2.608)
 fov = 45.0
 script = ExtResource("1_w78d5")
 
@@ -84,7 +69,7 @@ offset_bottom = 0.251999
 text = "Water: 0"
 
 [node name="item3" type="StaticBody3D" parent="." groups=["resources", "water"]]
-transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, -0.162016, 0.151982, 0.271158)
+transform = Transform3D(0.0865572, 0, 0, 0, 0.0865572, 0, 0, 0, 0.0865572, -0.0893242, 0.179585, 0.200707)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item3"]
 shape = SubResource("BoxShape3D_tnflf")
