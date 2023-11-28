@@ -1,35 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://s4pjmawr2pyx"]
+[gd_scene load_steps=5 format=3 uid="uid://s4pjmawr2pyx"]
 
 [ext_resource type="Script" path="res://scripts/Resource.gd" id="1_2jgal"]
 [ext_resource type="PackedScene" uid="uid://byadm7hmy2wjj" path="res://scenes/platform.tscn" id="1_ploio"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="1_w78d5"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tnflf"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_2dli3"]
+[ext_resource type="Script" path="res://scripts/UI.gd" id="3_82hg2"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="platform" parent="." instance=ExtResource("1_ploio")]
 transform = Transform3D(0.328004, 0, 0, 0, 0.328004, 0, 0, 0, 0.328004, 0, 0, 0)
-
-[node name="item1" type="StaticBody3D" parent="." groups=["resources", "wood"]]
-transform = Transform3D(0.0634945, 0, 0, 0, 0.0634945, 0, 0, 0, 0.0634945, -0.135203, 0.160445, 0.0846909)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="item1"]
-shape = SubResource("BoxShape3D_tnflf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="item1"]
-mesh = SubResource("BoxMesh_2dli3")
-
-[node name="item2" type="StaticBody3D" parent="." groups=["resources", "water"]]
-transform = Transform3D(0.0634945, 0, 0, 0, 0.0634945, 0, 0, 0, 0.0634945, 0.112304, 0.160445, 0.184323)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="item2"]
-shape = SubResource("BoxShape3D_tnflf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="item2"]
-mesh = SubResource("BoxMesh_2dli3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 5, 2.5)
@@ -45,6 +24,7 @@ anchor_right = 0.998
 anchor_bottom = 1.0
 offset_right = 0.303955
 offset_bottom = 5.0
+script = ExtResource("3_82hg2")
 
 [node name="wood_label" type="Label" parent="UI"]
 layout_mode = 1
@@ -68,15 +48,5 @@ offset_right = -0.150024
 offset_bottom = 0.251999
 text = "Water: 0"
 
-[node name="item3" type="StaticBody3D" parent="." groups=["resources", "water"]]
-transform = Transform3D(0.0634945, 0, 0, 0, 0.0634945, 0, 0, 0, 0.0634945, -0.0711329, 0.160445, 0.173632)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="item3"]
-shape = SubResource("BoxShape3D_tnflf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="item3"]
-mesh = SubResource("BoxMesh_2dli3")
-
 [node name="HandleResources" type="Node3D" parent="."]
-transform = Transform3D(0.733555, 0, 0, 0, 0.733555, 0, 0, 0, 0.733555, -0.00560865, 0.0287098, 0.026402)
 script = ExtResource("1_2jgal")

@@ -68,5 +68,5 @@ func get_selected():
 			_instance.global_transform = result["collider"].global_transform	
 			result["collider"].queue_free()
 			_instance.detect_colliders()	
-			_instance.generate_resources()
+			_instance.generate_platforms()
 			count += 1

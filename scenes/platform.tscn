@@ -15,13 +15,13 @@
 [node name="platform" type="Node3D" groups=["platform"]]
 script = ExtResource("1_2qbu2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(2.17437, 0, 0, 0, 0.296265, 0, 0, 0, 2.32934, 0, 0, 0)
+[node name="ground" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 0.272, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
 shape = SubResource("BoxShape3D_gys0x")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
 mesh = SubResource("BoxMesh_pd338")
 
 [node name="up" type="StaticBody3D" parent="." groups=["arrow"]]

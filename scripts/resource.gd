@@ -1,7 +1,11 @@
 extends Node3D
 
-@onready var _wood_label = $"../UI/wood_label"
-@onready var _water_label = $"../UI/water_label"
+#TODO: send signal to change this
+
+signal changeText
+signal destroyResource
+
+var type = ""
 
 var rndMax = {
 		"wood" : 4,
@@ -15,13 +19,17 @@ var total = {
 
 func detect_object(collied_object, time):
 	if time >= 3:
+		destroyResource.emit(collied_object)
 		collied_object.queue_free()
 		if collied_object.is_in_group("wood"):
-			total["wood"] += int(count_random(rndMax["wood"]))
-			_wood_label.text = str("Wood: ", total["wood"])
+			type = "wood"
+			total[type] += int(count_random(rndMax[type]))
 		elif collied_object.is_in_group("water"):
-			total["water"] += int(count_random(rndMax["water"]))
-			_water_label.text = str("Water: ", total["water"])
+			type = "water"
+			total[type] += int(count_random(rndMax[type]))
+		
+		if type != "":
+			changeText.emit(type, total[type])
 
 func count_random(maxInt) -> float:
 	var rng = RandomNumberGenerator.new()
