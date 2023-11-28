@@ -15,7 +15,7 @@ size = Vector3(1.67004, 0.102964, 1.35368)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="platform2" parent="." instance=ExtResource("1_ploio")]
+[node name="platform2" parent="." groups=["platform"] instance=ExtResource("1_ploio")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.842, 0, 0)
 
 [node name="platform" type="StaticBody3D" parent="."]
@@ -28,7 +28,7 @@ transform = Transform3D(1.6902, 0, 0, 0, 0.11579, 0, 0, 0, 1.34738, 0, 0, 0)
 mesh = SubResource("BoxMesh_kdsnx")
 skeleton = NodePath("../..")
 
-[node name="item1" type="StaticBody3D" parent="." groups=["wood"]]
+[node name="item1" type="StaticBody3D" parent="." groups=["resources", "wood"]]
 transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, -0.357349, 0.151982, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item1"]
@@ -37,7 +37,7 @@ shape = SubResource("BoxShape3D_tnflf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="item1"]
 mesh = SubResource("BoxMesh_2dli3")
 
-[node name="item2" type="StaticBody3D" parent="." groups=["water"]]
+[node name="item2" type="StaticBody3D" parent="." groups=["resources", "water"]]
 transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, 0.397235, 0.151982, 0.303752)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item2"]
@@ -83,7 +83,7 @@ offset_right = -0.150024
 offset_bottom = 0.251999
 text = "Water: 0"
 
-[node name="item3" type="StaticBody3D" parent="." groups=["water"]]
+[node name="item3" type="StaticBody3D" parent="." groups=["resources", "water"]]
 transform = Transform3D(0.193578, 0, 0, 0, 0.193578, 0, 0, 0, 0.193578, -0.162016, 0.151982, 0.271158)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item3"]

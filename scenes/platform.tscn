@@ -1,6 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://byadm7hmy2wjj"]
-
-[ext_resource type="Script" path="res://scripts/GeneratePlatform.gd" id="1_4hwxk"]
+[gd_scene load_steps=5 format=3 uid="uid://byadm7hmy2wjj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gys0x"]
 
@@ -11,7 +9,6 @@
 [sub_resource type="BoxMesh" id="BoxMesh_1mxoq"]
 
 [node name="platform" type="Node3D"]
-script = ExtResource("1_4hwxk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(2.17437, 0, 0, 0, 0.296265, 0, 0, 0, 2.32934, 0, 0, 0)

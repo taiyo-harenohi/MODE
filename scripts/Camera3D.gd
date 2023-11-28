@@ -13,8 +13,9 @@ var mouse = Vector3()
 var isHolding: bool = false
 var time = 0
 
-@onready var handlerResources = $"../HandleResources"
-@onready var platform = $"../platform"
+var platformInstance = load("res://scenes/platform.tscn")
+
+@onready var _handlerResources = $"../HandleResources"
 
 func _physics_process(delta):
 	if isHolding:
@@ -50,6 +51,10 @@ func get_selected():
 	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
 	
 	if result.has("collider"):
-		if result["collider"] != platform:
-			print(result["collider"])
-			handlerResources.detect_object(result["collider"], time)
+		if result["collider"].is_in_group("resources"):
+			_handlerResources.detect_object(result["collider"], time)
+		if result["collider"].is_in_group("arrow"):
+			var _instance = platformInstance.instantiate()
+			get_tree().get_root().add_child(_instance)
+			_instance.global_transform = result["collider"].global_transform
+			result["collider"].queue_free()
