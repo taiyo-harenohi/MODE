@@ -11,10 +11,10 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="platform" parent="." instance=ExtResource("1_ploio")]
-transform = Transform3D(0.447143, 0, 0, 0, 0.447143, 0, 0, 0, 0.447143, 0, 0, 0)
+transform = Transform3D(0.328004, 0, 0, 0, 0.328004, 0, 0, 0, 0.328004, 0, 0, 0)
 
 [node name="item1" type="StaticBody3D" parent="." groups=["resources", "wood"]]
-transform = Transform3D(0.0865572, 0, 0, 0, 0.0865572, 0, 0, 0, 0.0865572, -0.176666, 0.179585, 0.0794608)
+transform = Transform3D(0.0634945, 0, 0, 0, 0.0634945, 0, 0, 0, 0.0634945, -0.135203, 0.160445, 0.0846909)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item1"]
 shape = SubResource("BoxShape3D_tnflf")
@@ -23,7 +23,7 @@ shape = SubResource("BoxShape3D_tnflf")
 mesh = SubResource("BoxMesh_2dli3")
 
 [node name="item2" type="StaticBody3D" parent="." groups=["resources", "water"]]
-transform = Transform3D(0.0865572, 0, 0, 0, 0.0865572, 0, 0, 0, 0.0865572, 0.160741, 0.179585, 0.215282)
+transform = Transform3D(0.0634945, 0, 0, 0, 0.0634945, 0, 0, 0, 0.0634945, 0.112304, 0.160445, 0.184323)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item2"]
 shape = SubResource("BoxShape3D_tnflf")
@@ -32,8 +32,8 @@ shape = SubResource("BoxShape3D_tnflf")
 mesh = SubResource("BoxMesh_2dli3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0.130013, 3, 2.608)
-fov = 45.0
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 5, 2.5)
+fov = 25.0
 script = ExtResource("1_w78d5")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -69,7 +69,7 @@ offset_bottom = 0.251999
 text = "Water: 0"
 
 [node name="item3" type="StaticBody3D" parent="." groups=["resources", "water"]]
-transform = Transform3D(0.0865572, 0, 0, 0, 0.0865572, 0, 0, 0, 0.0865572, -0.0893242, 0.179585, 0.200707)
+transform = Transform3D(0.0634945, 0, 0, 0, 0.0634945, 0, 0, 0, 0.0634945, -0.0711329, 0.160445, 0.173632)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="item3"]
 shape = SubResource("BoxShape3D_tnflf")
@@ -78,4 +78,5 @@ shape = SubResource("BoxShape3D_tnflf")
 mesh = SubResource("BoxMesh_2dli3")
 
 [node name="HandleResources" type="Node3D" parent="."]
+transform = Transform3D(0.733555, 0, 0, 0, 0.733555, 0, 0, 0, 0.733555, -0.00560865, 0.0287098, 0.026402)
 script = ExtResource("1_2jgal")

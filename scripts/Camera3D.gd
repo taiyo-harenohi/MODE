@@ -2,11 +2,11 @@ extends Camera3D
 
 var zoomSpeed: float = 2
 var minZoom: float = 25.0
-var maxZoom: float = 85.0
+var maxZoom: float = 100.0
 var dragSen: float = 2.0
 
-var center: Vector3 = Vector3(1, 2, 2.5)
-var zoom: float = 45
+var center: Vector3 = Vector3(0, 5, 2.5)
+var zoom: float = 25
 
 var mouse = Vector3()
 
@@ -25,6 +25,12 @@ func _physics_process(delta):
 		get_selected()
 	else: 
 		time = 0
+	if fov >= 80:
+		dragSen = 4.0
+	elif fov <= 45:
+		dragSen = 0.5
+	else: 
+		dragSen = 1.5
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
