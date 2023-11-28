@@ -52,6 +52,7 @@ func _input(event):
 	if Input.is_action_just_pressed("restart_zoom"):
 		fov = zoom
 
+# TODO: add count checking
 func get_selected():
 	var worldspace = get_world_3d().direct_space_state
 	var start = project_ray_origin(mouse)
@@ -67,5 +68,5 @@ func get_selected():
 			_instance.global_transform = result["collider"].global_transform	
 			result["collider"].queue_free()
 			_instance.detect_colliders()	
+			_instance.generate_resources()
 			count += 1
-			
