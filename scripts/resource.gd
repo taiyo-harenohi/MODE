@@ -17,7 +17,7 @@ var total = {
 	"water" : 0
 }
 
-func detect_object(collied_object, time):
+func detect_object(collied_object, time) -> int:
 	if time >= 3:
 		destroyResource.emit(collied_object)
 		collied_object.queue_free()
@@ -27,9 +27,11 @@ func detect_object(collied_object, time):
 		elif collied_object.is_in_group("water"):
 			type = "water"
 			total[type] += int(count_random(rndMax[type]))
-		
 		if type != "":
 			changeText.emit(type, total[type])
+		var rng = RandomNumberGenerator.new()
+		return int(rng.randf_range(0, 10))
+	return 0
 
 func count_random(maxInt) -> float:
 	var rng = RandomNumberGenerator.new()

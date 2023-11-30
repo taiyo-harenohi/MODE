@@ -16,8 +16,10 @@ var time = 0
 var count = 0
 
 var platformInstance = load("res://scenes/platform.tscn")
+var coins = 0
 
 @onready var _handlerResources = $"../HandleResources"
+@onready var _handlerGoals = $"../HandleGoals"
 
 func _physics_process(delta):
 	if isHolding:
@@ -61,7 +63,8 @@ func get_selected():
 	
 	if result.has("collider"):
 		if result["collider"].is_in_group("resources"):
-			_handlerResources.detect_object(result["collider"], time)
+			coins += _handlerResources.detect_object(result["collider"], time)
+			print(coins)
 		elif result["collider"].is_in_group("arrow"):
 			var _instance = platformInstance.instantiate()
 			get_tree().get_root().add_child(_instance)

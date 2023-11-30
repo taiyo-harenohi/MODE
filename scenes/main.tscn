@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://s4pjmawr2pyx"]
+[gd_scene load_steps=6 format=3 uid="uid://s4pjmawr2pyx"]
 
 [ext_resource type="Script" path="res://scripts/Resource.gd" id="1_2jgal"]
 [ext_resource type="PackedScene" uid="uid://byadm7hmy2wjj" path="res://scenes/platform.tscn" id="1_ploio"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="1_w78d5"]
 [ext_resource type="Script" path="res://scripts/UI.gd" id="3_82hg2"]
+[ext_resource type="Script" path="res://scripts/Goals.gd" id="5_uayoa"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -51,3 +52,6 @@ text = "Water: 0"
 
 [node name="HandleResources" type="Node3D" parent="."]
 script = ExtResource("1_2jgal")
+
+[node name="HandleGoals" type="Node3D" parent="."]
+script = ExtResource("5_uayoa")
