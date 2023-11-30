@@ -55,17 +55,14 @@ func generate_resources(type):
 	var cube_scale = self.get_node("ground").global_transform.basis.get_scale()
 	var side_length = cube_scale.x / 2
 
-	
-	# TODO: load resource -- path the same, the end will be based on the type 
 	var path = str("res://scenes/", type, ".tscn")
-	var resource = load("res://scenes/wood.tscn")
+	var resource = load(path)
 	var i = 0
 	while i < probability:
 		var position_x = rng.randf_range(-0.3, side_length - 0.01)		
 		var position_z = rng.randf_range(-0.3, side_length - 0.01)		
 		
 		var ground_position = _platform.global_transform.origin
-		# TODO: not correct position
 		var resource_position = ground_position + Vector3(position_x, cube_scale.y, position_z)
 
 		var too_close = false

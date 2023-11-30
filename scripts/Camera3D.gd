@@ -20,6 +20,7 @@ var coins = 0
 
 @onready var _handlerResources = $"../HandleResources"
 @onready var _handlerGoals = $"../HandleGoals"
+@onready var _coins = $"../UI/coins"
 
 func _physics_process(delta):
 	if isHolding:
@@ -62,9 +63,11 @@ func get_selected():
 	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
 	
 	if result.has("collider"):
+		if coins > 0:
+			_coins.show()
 		if result["collider"].is_in_group("resources"):
 			coins += _handlerResources.detect_object(result["collider"], time)
-			print(coins)
+			_coins.text = str("Coins: ", coins)
 		elif result["collider"].is_in_group("arrow"):
 			var _instance = platformInstance.instantiate()
 			get_tree().get_root().add_child(_instance)

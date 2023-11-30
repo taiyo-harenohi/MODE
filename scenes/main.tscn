@@ -50,6 +50,19 @@ offset_right = -0.150024
 offset_bottom = 0.251999
 text = "Water: 0"
 
+[node name="coins" type="Label" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.845
+anchor_right = 1.0
+anchor_bottom = 0.118
+offset_left = 0.249939
+offset_top = 3.0
+offset_right = 2.0
+offset_bottom = -0.0540085
+text = "Coins: "
+
 [node name="HandleResources" type="Node3D" parent="."]
 script = ExtResource("1_2jgal")
 

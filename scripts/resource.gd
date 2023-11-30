@@ -4,6 +4,7 @@ extends Node3D
 
 signal changeText
 signal destroyResource
+signal goalAchieved
 
 var type = ""
 
@@ -29,6 +30,7 @@ func detect_object(collied_object, time) -> int:
 			total[type] += int(count_random(rndMax[type]))
 		if type != "":
 			changeText.emit(type, total[type])
+		goalAchieved.emit(type, total[type])
 		var rng = RandomNumberGenerator.new()
 		return int(rng.randf_range(0, 10))
 	return 0

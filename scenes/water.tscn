@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgrba74sisjtc"]
+
+[ext_resource type="Script" path="res://scripts/Resource.gd" id="1_htexw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wi321"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ul6vk"]
+
+[node name="water" type="Node3D"]
+script = ExtResource("1_htexw")
+
+[node name="item1" type="StaticBody3D" parent="." groups=["resources", "water"]]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="item1"]
+shape = SubResource("BoxShape3D_wi321")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="item1"]
+mesh = SubResource("BoxMesh_ul6vk")
