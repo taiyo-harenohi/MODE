@@ -63,8 +63,76 @@ offset_right = 2.0
 offset_bottom = -0.0540085
 text = "Coins: "
 
+[node name="shop" type="Button" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.948
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.191
+offset_left = -0.200073
+offset_top = -0.300003
+offset_right = 5.0
+offset_bottom = 0.276993
+action_mode = 0
+text = "Shop"
+
+[node name="shop_window" type="ColorRect" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.177
+anchor_top = 0.119
+anchor_right = 0.84
+anchor_bottom = 0.848
+offset_left = 0.449997
+offset_top = 0.292999
+offset_right = -6.10352e-05
+offset_bottom = 0.255981
+
+[node name="item1" type="Button" parent="UI/shop_window"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.079
+anchor_top = 0.116
+anchor_right = 0.217
+anchor_bottom = 0.382
+offset_left = -9.198
+offset_top = -6.216
+offset_right = -0.354004
+offset_bottom = 0.167984
+
+[node name="item2" type="Button" parent="UI/shop_window"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.349
+anchor_top = 0.107
+anchor_right = 0.499
+anchor_bottom = 0.387
+offset_left = 0.0619812
+offset_top = 0.067997
+offset_right = -0.238007
+offset_bottom = -0.212006
+
+[node name="item3" type="Button" parent="UI/shop_window"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.642
+anchor_top = 0.107
+anchor_right = 0.791
+anchor_bottom = 0.387
+offset_left = -0.20401
+offset_top = 0.067997
+offset_right = 0.257996
+offset_bottom = -0.212006
+
 [node name="HandleResources" type="Node3D" parent="."]
 script = ExtResource("1_2jgal")
 
 [node name="HandleGoals" type="Node3D" parent="."]
 script = ExtResource("5_uayoa")
+
+[connection signal="pressed" from="UI/shop" to="Camera3D" method="_on_shop_pressed"]
+[connection signal="pressed" from="UI/shop_window/item1" to="Camera3D" method="_on_roof_pressed"]
+[connection signal="pressed" from="UI/shop_window/item2" to="Camera3D" method="_on_boost_pressed"]

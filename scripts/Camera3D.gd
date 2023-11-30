@@ -21,8 +21,12 @@ var coins = 0
 @onready var _handlerResources = $"../HandleResources"
 @onready var _handlerGoals = $"../HandleGoals"
 @onready var _coins = $"../UI/coins"
+@onready var _shop = $"../UI/shop"
+@onready var _shopWindow = $"../UI/shop_window"
 
-func _physics_process(delta):
+var shopOpen: bool = false
+
+func _physics_process(delta):	
 	if isHolding:
 		time += delta
 		get_selected()
@@ -34,12 +38,29 @@ func _physics_process(delta):
 		dragSen = 0.5
 	else: 
 		dragSen = 1.5
+		
+func _on_shop_pressed():
+	shopOpen = !shopOpen
+	if shopOpen:
+		_shopWindow.show()
+	else: 
+		_shopWindow.hide()
+
+
+
+func _on_roof_pressed():
+	print("better roof")
+	
+func _on_boost_pressed():
+	print("boost speed")
+	
+	
 
 func _input(event):
-	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and shopOpen == false:
 		position -= Vector3(event.relative.x, 0, event.relative.y) * dragSen / fov * 0.1
 
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and shopOpen == false:
 		mouse = event.position
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			isHolding = event.pressed
@@ -65,6 +86,7 @@ func get_selected():
 	if result.has("collider"):
 		if coins > 0:
 			_coins.show()
+			_shop.show()
 		if result["collider"].is_in_group("resources"):
 			coins += _handlerResources.detect_object(result["collider"], time)
 			_coins.text = str("Coins: ", coins)
