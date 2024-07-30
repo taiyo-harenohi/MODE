@@ -95,7 +95,7 @@ func selling_price(type) -> float:
 		resourcePrice[type] -= amountSold[type] / 100.0
 		print(amountSold[type]/100.0)
 		print(resourcePrice)
-	return amountSold[type] * resourcePrice[type]
+	return int(amountSold[type] * resourcePrice[type])
 	
 func _on_shop_pressed():
 	shopOpen = !shopOpen

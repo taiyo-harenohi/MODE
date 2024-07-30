@@ -4,8 +4,8 @@ extends Node3D
 @onready var _goalWindow = $"../UI/goal achieved"
 
 var goals = {
-	"wood": 20,
-	"water": 10
+	"wood": 5,
+	"water": 1
 }
 
 var achieved = {}
@@ -31,7 +31,6 @@ func _ready():
 	
 func goalAchieved(type, value):
 	var numberGoals = goals.size() - 1
-	print(value)
 	if value >= goals[type]:
 		achieved[type] = value
 	if achieved.size() == goals.size():
@@ -53,4 +52,3 @@ func goalAchieved(type, value):
 		newResourceValue.erase(newResourceValue[0])
 		newResource.erase(newResource[0])
 		increaseMaxAmount.emit(progressTracker)
-		print(goals)

@@ -1,6 +1,6 @@
 extends Node3D
 
-var probabilityDict = {
+static var probabilityDict = {
 	"nothing": 6,
 	"wood": 53,
 	"water": 100,
@@ -43,7 +43,7 @@ func generate_platforms():
 	var probability = rng.randf_range(1, 100)
 	var type = ""
 
-	print(probability)
+	print(probabilityDict["water"])
 	if in_between(0, probabilityDict["nothing"], probability):
 		print("generate nothing")	
 	elif in_between(probabilityDict["nothing"], probabilityDict["wood"], probability):
@@ -114,12 +114,11 @@ func destroyResource(resource):
 
 func changePrecentage(type):
 	if _handleGoals.goals.size() == 3:
-		print(_handleGoals.goals.size())
 		probabilityDict["nothing"] = 8
 		probabilityDict["wood"] = 40
 		probabilityDict["water"] = 80
 		probabilityDict["stone"] = 100
-	elif _handleGoals.goals.size() == 5:
+	elif _handleGoals.goals.size() == 4:
 		probabilityDict["nothing"] = 9
 		probabilityDict["wood"] = 35
 		probabilityDict["water"] = 60
