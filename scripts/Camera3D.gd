@@ -27,7 +27,7 @@ var prices:Dictionary = {
 }
 
 # TODO: when hitting goal, adds to this the new resources types
-# types to come -- stone, gemstones and coal, iron/copper/gold/iridium ore, deers and rabbits and chicken -> meat,
+# types to come -- stone, gemstones and coal, iron, deers and rabbits and chicken -> meat,
 # energy from solar panels, people (their houses, so stone, wood etc. from it too
 var amountSold:Dictionary = {
 	"wood": 0, 
@@ -77,18 +77,24 @@ func _on_sell_pressed():
 		_sellWindow.hide()
 		
 func _on_sell_wood_pressed():
+	if _handlerResources.crntAmount["wood"] == 0:
+		return
 	coins += selling_price("wood")
 	_coins.text = str("Coins: ", coins)
 
 func _on_sell_water_pressed():
+	if _handlerResources.crntAmount["water"] == 0:
+		return
 	coins += selling_price("water")
 	_coins.text = str("Coins: ", coins)
 
 func selling_price(type) -> float:
 	amountSold[type] += _handlerResources.total[type]
 	_handlerResources.changeResourceAmount(type)
-	if resourcePrice[type] > 0.75:
-		resourcePrice[type] -= amountSold[type] / 100
+	if resourcePrice[type] > 0.5:
+		resourcePrice[type] -= amountSold[type] / 100.0
+		print(amountSold[type]/100.0)
+		print(resourcePrice)
 	return amountSold[type] * resourcePrice[type]
 	
 func _on_shop_pressed():
@@ -103,6 +109,7 @@ func _on_roof_pressed():
 	if coins >= prices["rooftop"]:
 		print("better roof")		
 		coins -= prices["rooftop"]
+		_coins.text = str("Coins: ", coins)
 		prices["rooftop"] *= 2	
 		# TODO:
 		# Simir´s new rooftop B-)

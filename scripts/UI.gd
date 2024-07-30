@@ -1,8 +1,6 @@
 extends Control
 
-@onready var _wood_label = $"wood_label"
-@onready var _water_label = $"water_label"
-
+@onready var _labels = $resources_labels
 @onready var _handle = $"../HandleResources"
 
 func _ready():
@@ -12,7 +10,8 @@ func _process(delta):
 	pass
 
 func changeText(type, value):
-	if type == "wood":
-		_wood_label.text = str("Wood: ", value)
-	elif type == "water":
-		_water_label.text = str("Water: ", value)
+	for label in _labels.get_children():
+		if label.to_string().contains(type):
+			if !label.visible:
+				label.visible = true
+			label.text = str(type, ": ", value)
