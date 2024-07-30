@@ -11,7 +11,7 @@ var MIN_DISTANCE_BETWEEN_RESOURCES = 0.1
 
 @onready var _platform = $"ground"
 
-func detect_colliders():
+func detect_colliders(amountPlatforms, MAX_AMOUNT) -> int:
 	var arrows_to_delete = []
 	for _arrow in self.get_children():
 		var nodes_in_group = get_tree().get_nodes_in_group("platform")
@@ -25,7 +25,10 @@ func detect_colliders():
 	for arrow_to_delete in arrows_to_delete:
 		if arrow_to_delete.is_in_group("arrow"):
 			arrow_to_delete.queue_free()
+	print(amountPlatforms)
+	return amountPlatforms + 1
 
+# TODO: add other platforms to this
 func generate_platforms():
 	var rng = RandomNumberGenerator.new()
 	var probability = rng.randf_range(1, 100)
